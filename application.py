@@ -9,11 +9,11 @@ def main():
     for user in users(db_session):
         print(user)
 
-    users_iterator = iter(UsersIterator(db_session))
     users_table = PrettyTable(
         ["id", "first_name", "last_name", "email", "registration_date"]
     )
-    users_table.add_rows([user for user in users_iterator])
+    users_iterator = iter(UsersIterator(db_session))
+    users_table.add_rows(users_iterator)
 
     print("Available users:")
     print(users_table)
